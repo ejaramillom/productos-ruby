@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      
+      <h1><%= form_title %></h1>
+
+      <!-- Creamos un for para la variable product creada en la accion(metodo) edit/new del controlador Products -->
+      <%= form_for @product do |f| %>
+
+        <!-- Creamos el campo de texto que esta mapeado a la variable name de la iteracion o del registro de la base de datos es como si estuvieramos entrando al @product.name con su respectivo ID!!!-->
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre del producto" %>
+        </div>
+
+        <!-- Igual que arriba, creamos el campo pero este campo ya es numerico para el precio del producto -->
+        <div class="form-group">
+          <%= f.number_field :price, class: "form-control input-lg", placeholder: "Precio del producto" %>
+        </div>
+
+        <!-- Creamos el boton de submit o enviar los cambios -->
+        <div>
+          <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

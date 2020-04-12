@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Productos</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <!-- Si el mensaje :notice existe, realizamos lo que esta adentro -->
+    <% if flash[:notice] %>
+
+    <!-- Agregamos las clases de bootstrap que muestran las alertas -->
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

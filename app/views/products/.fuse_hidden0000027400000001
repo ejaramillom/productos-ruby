@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>Productos</h1>
+
+      <!-- Agregamos el boton para crear un nuevo producto desde el INDEX -->
+      <div class="text-right"> <!-- Corremos a la derecha el boton con la clase de bootstrao text-right -->
+        <%= link_to "Publicar producto", new_product_path, class: "btn btn-primary" %>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.name %></td>        
+              <td><%= product.price %></td>
+              <td>
+                <!-- Tambien se podria implementar el link a el producto name de la siguiente manera:
+                  
+                  <%= link_to product.name, product %>
+
+                 -->
+
+                <%= link_to "Mostrar", product %>
+                <%= link_to "Editar", edit_product_path(product) %>
+
+                <!-- Creamos el boton de eliminar y ademas el mensaje de alerta para confirmar la accion -->
+                <%= link_to "Eliminar", product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
