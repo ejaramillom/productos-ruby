@@ -4,31 +4,27 @@
 
       <h1><%= form_title %></h1>
 
-      <!-- Creamos un form para la variable product creada en la accion(metodo) edit/new del controlador Products -->
       <%= form_for @product do |f| %>
-
-        <!-- Creamos el campo de texto que esta mapeado a la variable name de la iteracion o del registro de la base de datos es como si estuvieramos entrando al @product.name con su respectivo ID!!!-->
         <div class="form-group">
           <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre del producto" %>
         </div>
 
-        <!-- Igual que arriba, creamos el campo pero este campo ya es numerico para el precio del producto -->
         <div class="form-group">
           <%= f.number_field :price, class: "form-control input-lg", placeholder: "Precio del producto" %>
         </div>
 
         <!-- Se crean campos con checkbox para asignar categorias -->
-        <%= f.fields_for :categories each do |categories_form| %>
-            <div class="form-group">
-              <%= categories_form.check_box :name  %>
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |c| %>
+            <div class="checkbox">
+              <%= c.label do  %>
+                <%= c.check_box  %> <%= c.object.name  %>
+              <% end %>
             </div>
-          <% end %>
         <% end %>
-        <!-- Creamos el boton de submit o enviar los cambios -->
+
         <div>
           <%= f.submit form_title, class: "btn btn-primary btn-lg btn-block" %>
         </div>
-
       <% end %>
 
     </div>

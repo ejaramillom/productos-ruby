@@ -4,8 +4,7 @@
 
       <h1>Productos</h1>
 
-      <!-- Agregamos el boton para crear un nuevo producto desde el INDEX -->
-      <div class="text-right"> <!-- Corremos a la derecha el boton con la clase de bootstrao text-right -->
+      <div class="text-right">
         <%= link_to "Publicar producto", new_product_path, class: "btn btn-primary" %>
       </div>
 
@@ -22,11 +21,10 @@
             <tr>
               <td><%= product.name %></td>
               <td><%= product.price %></td>
-              <td><%= product.categories_id %></td>
+              <td><%= product.categories.pluck(:name).join(",") %></td>
               <td>
                 <%= link_to "Mostrar", product %>
                 <%= link_to "Editar", edit_product_path(product) %>
-                <!-- Creamos el boton de eliminar y ademas el mensaje de alerta para confirmar la accion -->
                 <%= link_to "Eliminar", product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
               </td>
             </tr>
