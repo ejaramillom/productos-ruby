@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   # Agregamos la ruta por defecto al ingresar a ...:3000
   root 'products#index'
-  
+
 end

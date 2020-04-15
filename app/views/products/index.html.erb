@@ -13,26 +13,19 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Descripción</th>
             <th>Precio</th>
-            <th></th>
+            <th>Categorías</th>
           </tr>
         </thead>
         <tbody>
           <% @products.each do |product| %>
             <tr>
-              <td><%= product.name %></td>        
+              <td><%= product.name %></td>
               <td><%= product.price %></td>
+              <td><%= product.categories_id %></td>
               <td>
-                <!-- Tambien se podria implementar el link a el producto name de la siguiente manera:
-                  
-                  <%= link_to product.name, product %>
-
-                 -->
-
                 <%= link_to "Mostrar", product %>
                 <%= link_to "Editar", edit_product_path(product) %>
-
                 <!-- Creamos el boton de eliminar y ademas el mensaje de alerta para confirmar la accion -->
                 <%= link_to "Eliminar", product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
               </td>
@@ -44,4 +37,3 @@
     </div>
   </div>
 </div>
-
